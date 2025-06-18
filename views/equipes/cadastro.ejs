@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Equipe - Sistema de Voleibol</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Cadastro de Equipe</h1>
+            <div class="user-info">
+                <a href="/menu" class="btn-secondary">Voltar ao Menu</a>
+                <a href="/logout" class="btn-logout">Sair</a>
+            </div>
+        </header>
+        
+        <main class="form-container">
+            <h2>Cadastrar Nova Equipe</h2>
+            
+            <% if (error) { %>
+                <div class="error-message">
+                    <%= error %>
+                </div>
+            <% } %>
+            
+            <% if (success) { %>
+                <div class="success-message">
+                    <%= success %>
+                </div>
+            <% } %>
+            
+            <form method="POST" action="/equipes/cadastro">
+                <div class="form-group">
+                    <label for="nomeEquipe">Nome da Equipe *</label>
+                    <input type="text" id="nomeEquipe" name="nomeEquipe" required 
+                           placeholder="Digite o nome da equipe">
+                </div>
+                
+                <div class="form-group">
+                    <label for="nomeTecnico">Nome do Técnico Responsável *</label>
+                    <input type="text" id="nomeTecnico" name="nomeTecnico" required 
+                           placeholder="Digite o nome do técnico">
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefoneTecnico">Telefone do Técnico *</label>
+                    <input type="tel" id="telefoneTecnico" name="telefoneTecnico" required 
+                           placeholder="(00) 00000-0000">
+                </div>
+                
+                <div class="btn-group">
+                    <button type="submit" class="btn-primary">Cadastrar Equipe</button>
+                    <a href="/menu" class="btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
+

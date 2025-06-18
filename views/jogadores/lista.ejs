@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Jogadores - Sistema de Voleibol</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Lista de Jogadores</h1>
+            <div class="user-info">
+                <a href="/menu" class="btn-secondary">Voltar ao Menu</a>
+                <a href="/logout" class="btn-logout">Sair</a>
+            </div>
+        </header>
+        
+        <main class="list-container">
+            <h2>Jogadores por Equipe</h2>
+            
+            <% 
+                let totalJogadores = 0;
+                Object.values(jogadoresPorEquipe).forEach(grupo => {
+                    totalJogadores += grupo.jogadores.length;
+                });
+            %>
+            
+            <% if (totalJogadores === 0) { %>
+                <div style="text-align: center; padding: 40px; color: #666;">
+                    <p>Nenhum jogador cadastrado ainda.</p>
+                </div>
+            <% } else { %>
+                <% Object.values(jogadoresPorEquipe).forEach(function(grupo) { %>
+                    <div class="jogador-group">
+                        <h3><%= grupo.equipe.nomeEquipe %> (<%= grupo.jogadores.length %>/6 jogadores)</h3>
+                        <p><strong>Técnico:</strong> <%= grupo.equipe.nomeTecnico %></p>
+                        
+                        <% if (grupo.jogadores.length === 0) { %>
+                            <p style="color: #666; font-style: italic;">Nenhum jogador cadastrado nesta equipe.</p>
+                        <% } else { %>
+                            <% grupo.jogadores.forEach(function(jogador) { %>
+                                <div class="jogador-item">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                                        <div>
+                                            <strong>Nº <%= jogador.numeroJogador %> - <%= jogador.nomeJogador %></strong>
+                                        </div>
+                                        <div style="font-size: 0.9em; color: #666;">
+                                            <%= jogador.posicao %> | <%= jogador.genero %> | <%= jogador.altura %>cm
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 5px; font-size: 0.9em; color: #666;">
+                                        <strong>Nascimento:</strong> <%= new Date(jogador.dataNascimento).toLocaleDateString('pt-BR') %>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        <% } %>
+                    </div>
+                <% }); %>
+            <% } %>
+            
+            <div class="navigation-buttons">
+                <a href="/jogadores/cadastro" class="btn-primary">Cadastrar Novo Jogador</a>
+                <a href="/menu" class="btn-secondary">Voltar ao Menu</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Voleibol - Menu</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Sistema de Voleibol - Campeonato Amador</h1>
+            <div class="user-info">
+                <p>Bem-vindo, <strong><%= username %></strong></p>
+                <p>Último acesso: <strong><%= lastAccess %></strong></p>
+                <a href="/logout" class="btn-logout">Sair</a>
+            </div>
+        </header>
+        
+        <main class="menu-main">
+            <h2>Menu Principal</h2>
+            
+            <div class="menu-options">
+                <div class="menu-card">
+                    <h3>Cadastro de Equipes</h3>
+                    <p>Cadastre as equipes participantes do campeonato</p>
+                    <a href="/equipes/cadastro" class="btn-primary">Cadastrar Equipe</a>
+                </div>
+                
+                <div class="menu-card">
+                    <h3>Cadastro de Jogadores</h3>
+                    <p>Cadastre os jogadores em suas respectivas equipes</p>
+                    <a href="/jogadores/cadastro" class="btn-primary">Cadastrar Jogador</a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
+

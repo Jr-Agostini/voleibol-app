@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Equipes - Sistema de Voleibol</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Lista de Equipes</h1>
+            <div class="user-info">
+                <a href="/menu" class="btn-secondary">Voltar ao Menu</a>
+                <a href="/logout" class="btn-logout">Sair</a>
+            </div>
+        </header>
+        
+        <main class="list-container">
+            <h2>Equipes Cadastradas</h2>
+            
+            <% if (equipes.length === 0) { %>
+                <div style="text-align: center; padding: 40px; color: #666;">
+                    <p>Nenhuma equipe cadastrada ainda.</p>
+                </div>
+            <% } else { %>
+                <% equipes.forEach(function(equipe) { %>
+                    <div class="equipe-item">
+                        <h3><%= equipe.nomeEquipe %></h3>
+                        <p><strong>Técnico:</strong> <%= equipe.nomeTecnico %></p>
+                        <p><strong>Telefone:</strong> <%= equipe.telefoneTecnico %></p>
+                        <p><strong>Cadastrado em:</strong> <%= equipe.dataCadastro.toLocaleDateString('pt-BR') %></p>
+                    </div>
+                <% }); %>
+            <% } %>
+            
+            <div class="navigation-buttons">
+                <a href="/equipes/cadastro" class="btn-primary">Cadastrar Nova Equipe</a>
+                <a href="/menu" class="btn-secondary">Voltar ao Menu</a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
+
